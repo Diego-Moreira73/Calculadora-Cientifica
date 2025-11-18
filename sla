@@ -1,23 +1,47 @@
-<?php
-  if (isset($_POST['calcular'])) {
-    $num1 = $_POST['num1'];
-    $num2 = $_POST['num2'];
-    $op = $_POST['operacoes'];
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora Neon</title>
+    <link rel="stylesheet" href="calculadora.css">
+</head>
+<body>
 
-    switch ($op) {
-      case '+': $resultado = $num1 + $num2; break;
-      case '-': $resultado = $num1 - $num2; break;
-      case '*': $resultado = $num1 * $num2; break;
-      case '/': $resultado = ($num2 != 0) ? $num1 / $num2 : 'Erro: divisão por zero'; break;
-      case 'sin': $resultado = sin(deg2rad($num1)); break;
-      case 'cos': $resultado = cos(deg2rad($num1)); break;
-      case 'tan': $resultado = tan(deg2rad($num1)); break;
-      case 'sqrt': $resultado = sqrt($num1); break;
-      case 'pow': $resultado = pow($num1, 2); break;
-      case 'log': $resultado = log($num1); break;
-      default: $resultado = 'Operação inválida';
-    }
+    <div class="calculadora">
+        
+        <h1>Calculadora</h1>
 
-    echo "<h3>Resultado: $resultado</h3>";
-  }
-  ?>
+        <form action="calculadora.php" method="post">
+            <input type="text" id="display" name="visor" value="<?php echo isset($visor) ? $visor : ''; ?>" readonly>
+
+            <div class="botao-grid">
+                
+                <button type="submit" name="tecla" value="Del" class="func">Del</button>
+                <button type="submit" name="tecla" value="(" class="func">(</button>
+                <button type="submit" name="tecla" value=")" class="func">)</button>
+                <button type="submit" name="tecla" value="/" class="func">/</button>
+
+                <button type="submit" name="tecla" value="7">7</button>
+                <button type="submit" name="tecla" value="8">8</button>
+                <button type="submit" name="tecla" value="9">9</button>
+                <button type="submit" name="tecla" value="*" class="func">*</button>
+
+                <button type="submit" name="tecla" value="4">4</button>
+                <button type="submit" name="tecla" value="5">5</button>
+                <button type="submit" name="tecla" value="6">6</button>
+                <button type="submit" name="tecla" value="-" class="func">-</button>
+
+                <button type="submit" name="tecla" value="1">1</button>
+                <button type="submit" name="tecla" value="2">2</button>
+                <button type="submit" name="tecla" value="3">3</button>
+                <button type="submit" name="tecla" value="+" class="func">+</button>
+
+                <button type="submit" name="tecla" value="0">0</button>
+                <button type="submit" name="tecla" value=".">.</button>
+                
+                <button type="submit" name="tecla" value="=" class="igual" style="grid-column: span 2;">=</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
